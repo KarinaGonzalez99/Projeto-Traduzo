@@ -16,32 +16,26 @@
         </div>
         <ul class="controls">
           <li class="row from">
-           <select name="translate-from">
+<select name="translate-from">
   {% for language in languages %}
     <option value="{{ language.acronym }}" {% if language.acronym == translate_from %}selected{% endif %}>{{ language.name|upper }}</option>
   {% endfor %}
 </select>
 
-<textarea name="text-to-translate">{{ text_to_translate }}</textarea>
-
-<select name="translate-to">
-  {% for language in languages %}
-    <option value="{{ language.code }}" {% if language.code == selected_translate_to %}selected{% endif %}>
-      {{ language.name }}
-    </option>
-  {% endfor %}
-</select>
-
-
-<p>{{ translated }}</p>
 
           </li>
+          <textarea name="text-to-translate">{{ text_to_translate }}</textarea>
           <div>
             <button class="tool" type="submit" formaction="/reverse">🔁</button>
           </div>
           <li class="row to">
-            <select name="translate-to">
-            </select>
+<select name="translate-to">
+  {% for language in languages %}
+    <option value="{{ language.acronym }}" {% if language.acronym == translate_to %}selected{% endif %}>{{ language.name|upper }}</option>
+  {% endfor %}
+</select>
+<p>{{ translated }}</p>
+
           </li>
         </ul>
       </div>

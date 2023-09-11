@@ -41,14 +41,16 @@ def reverse():
     form_translate_from = request.form.get("translate-from")
     form_translate_to = request.form.get("translate-to")
 
+    selected_translate_to = form_translate_to
+
     return render_template(
         "index.html",
-        languages=LanguageModel.find(),
+        languages=LanguageModel.list_dicts(),
         text_to_translate=form_text_to_translate,
         translate_from=form_translate_to,
         translate_to=form_translate_from,
         translated=GoogleTranslator(
-                source=form_translate_from, target=form_translate_to
-            ).translate(form_text_to_translate),
-        selected_translate_to=form_translate_to
+            source=form_translate_from, target=form_translate_to
+        ).translate(form_text_to_translate),
+        selected_translate_to=selected_translate_to
     )
